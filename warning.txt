@@ -1,0 +1,8 @@
+Guide_False
+en
+tf0
+port1
+25600
+autolevel0
+adxl3450
+outpng0
