@@ -134,7 +134,7 @@ class InputShaperPanel(ScreenPanel):
             self.lab = Gtk.Label()
             self.lab.set_markup(_("<big><b>Measuring X and Y, please wait...</b></big>"))
             self.dialog = self._gtk.Dialog_button(self._screen, self.lab)  
-            GLib.timeout_add_seconds(380, self.measurement_completed)
+            GLib.timeout_add_seconds(395, self.measurement_completed)
         self.calibrate_btn.set_label(self.lang.gettext('Calibrating...'))
         self.calibrate_btn.set_sensitive(False)
 
