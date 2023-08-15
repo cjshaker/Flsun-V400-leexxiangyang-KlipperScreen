@@ -1,6 +1,7 @@
 import gi
 import logging
 import os
+import time
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, GLib, Pango
@@ -251,7 +252,9 @@ class SettingsPanel(ScreenPanel):
     def resetpad_shell(self, widget, response_id,):
         if response_id == Gtk.ResponseType.OK:
             logging.debug("reset_pad to %s")
-            os.system("echo reset > /home/pi/reset_pad && reboot")
+            os.system("/etc/init.d/reset.sh")
+            time.sleep(3)
+            os.system("reboot")
         widget.destroy()
 
     def unload_menu(self, widget=None):
