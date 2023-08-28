@@ -250,12 +250,18 @@ class SettingsPanel(ScreenPanel):
             dialog = self._gtk.Dialog(self._screen, buttons, label, self.resetpad_shell)
                
     def resetpad_shell(self, widget, response_id,):
+        _ = self.lang.gettext
         if response_id == Gtk.ResponseType.OK:
+            self.reset = Gtk.Label()
+            self.reset.set_markup(_("<big><b>Resetting the Printer System, Please wait...</b></big>"))
+            self.dialog = self._gtk.Dialog_button(self._screen, self.reset)  
+            GLib.timeout_add_seconds(10, self.destroy_dialog)
             logging.debug("reset_pad to %s")
             os.system("/etc/init.d/reset.sh")
-            time.sleep(3)
-            os.system("reboot")
-        widget.destroy()
+        widget.destroy()    
+    def destroy_dialog(self):
+        _ = self.lang.gettext 
+        self.dialog.destroy()
 
     def unload_menu(self, widget=None):
         logging.debug("self.menu: %s" % self.menu)
