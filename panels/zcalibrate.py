@@ -114,7 +114,7 @@ class ZCalibratePanel(ScreenPanel):
         # self.labels['stop'].connect("clicked", self.temergency_stop)
         self.labe.set_markup(_("<big><b>Bed Leveling,please wait...</b></big>"))
         self.dialog = self._gtk.Dialog_button(self._screen, self.labe)  
-        GLib.timeout_add_seconds(285, self.destroy_dialog)
+        GLib.timeout_add_seconds(277, self.destroy_dialog)
         logging.debug("Canceling auto-leveling")
         gcode = "SET_GCODE_OFFSET Z=0\nG28\nDELTA_CALIBRATE\nG1 X0 Y0 Z50 F1000\nSAVE_CONFIG"
         self._screen._ws.klippy.gcode_script(gcode)
